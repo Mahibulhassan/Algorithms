@@ -7,8 +7,8 @@ int dist[100005];
 int main()
 {
 
-    freopen("input.text","r",stdin);
-    freopen("output.text","w",stdout);
+  //  freopen("input.text","r",stdin);
+  //  freopen("output.text","w",stdout);
 
     int t,source=2,u,n;
     cin >> t;
