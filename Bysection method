@@ -1,0 +1,57 @@
+#include<bits/stdc++.h>
+using namespace std;
+///Telmplates.....................
+#define PI  2*acos(0.0)
+#define pf  printf
+#define sf  scanf
+#define ff  first
+#define ss  second
+#define mp  make_pair
+#define pb  push_back
+typedef long long ll;
+typedef unsigned long long ull;
+typedef std::vector<int> vi;
+typedef vector<long long> vll ;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+#define sc(n)       sf("%d",&n);
+#define scf(f)      sf("%f",&f);
+#define FOR(a,n)  for(int i = a; i < n; i++)
+#define TEST(test)  for(int cse = 0; cse < test; cse++)
+
+#define all(x) (x).begin(), (x).end()
+#define fap(x) cout << __LINE__ << " says: " << #x << " = " << x << "\n"
+#define FastIO ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+const ll INF = 2000000000000000000LL;
+const int inf = 0x3f3f3f3f;
+const long double EPS = 1e-9;
+
+///templates....................
+ll n,m,k;
+ll f(ll mid)
+{
+    ll ide=0;
+    for(int i=1;i<=n;i++)
+    {
+        ide+=min(mid/i,m);
+    }
+    return ide;
+}
+int main()
+{
+    cin>>n>>m>>k;
+    ll L=1;
+    ll R=n*m+1;
+    int cou=64;
+    while (cou-- && L<R)
+    {
+            ll mid =L+(R-L)/2;
+            ll c=f(mid);
+            if (c<k)
+                L=mid+1;
+            else
+                R=mid;
+    }
+    cout<<L<<endl;
+    return 0;
+}
