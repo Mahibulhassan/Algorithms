@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int a[]={5,200,50,80,150,500,30,5,2};
+
+int partition (int low, int high)
+{
+    int pivot = a[high];
+    int i = (low - 1);
+
+    for (int j = low; j <= high - 1; j++)
+    {
+
+        if (a[j] < pivot)
+        {
+            i++;
+            swap(a[i], a[j]);
+        }
+    }
+    swap(a[i + 1], a[high]);
+    return (i + 1);
+}
+
+
+void quickSort(int low, int high)
+{
+    if (low < high)
+    {
+
+        int pi = partition(low, high);
+
+
+        quickSort(low, pi - 1);
+        quickSort(pi + 1, high);
+    }
+}
+
+void printaay(int size)
+{
+    int i;
+    for (i = 0; i < size; i++)
+        cout << a[i] << " ";
+    cout << endl;
+}
+
+int main()
+{
+
+    int n = sizeof(a) / sizeof(a[0]);
+    quickSort(0, n - 1);
+    cout << "Sorted aay: \n";
+    printaay(n);
+    return 0;
+}
