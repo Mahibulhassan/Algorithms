@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+void printDivisors(int n)
+{
+    for (int i=1; i<=sqrt(n); i++)
+    {
+        if (n%i == 0)
+        {
+
+            if (n/i == i){
+                printf("%d ", i);
+            }
+
+            else
+            {
+                printf("%d %d ", i, n/i);
+            }
+        }
+    }
+
+    cout<<sum<<endl;
+}
+
+int main()
+{
+    long long int x;
+    cin>>x;
+    printDivisors(x);
+    return 0;
+}
