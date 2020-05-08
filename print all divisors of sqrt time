@@ -8,17 +8,17 @@ void printDivisors(int n)
         {
 
             if (n/i == i){
-                printf("%d ", i);
+                printf("%d ", i);  // print only divisor by
             }
 
             else
             {
-                printf("%d %d ", i, n/i);
+                printf("%d %d ", i, n/i); //print divide and divisor
             }
         }
     }
 
-    cout<<sum<<endl;
+//    cout<<sum<<endl;
 }
 
 int main()
