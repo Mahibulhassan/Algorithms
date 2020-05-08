@@ -8,12 +8,12 @@ void printDivisors(int n)
         {
 
             if (n/i == i){
-                printf("%d ", i);  // print only divisor by
+                printf("%d ", i);
             }
 
             else
             {
-                printf("%d %d ", i, n/i); //print divide and divisor
+                printf("%d %d ", i, n/i); 
             }
         }
     }
