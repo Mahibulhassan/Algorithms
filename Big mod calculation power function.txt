@@ -1,0 +1,28 @@
+//calculate poer function using big mod...
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+ll bigmod(ll b,ll p,ll m)
+{
+    if (p==0)
+        return 1;
+    if(p%2==0)
+    {
+        ll res = bigmod(b,p/2,m);
+        return ((res%m)*(res%m))%m;
+    }
+    else
+    {
+        return ((b%m)*(bigmod(b,p-1,m)%m))%m;
+    }
+}
+
+int main()
+{
+    long long base,pow,mod;
+    cin>>base>>pow>>mod;
+    cout<<"Answer is : "<<bigmod(base,pow,mod)<<endl;
+    return 0;
+}
