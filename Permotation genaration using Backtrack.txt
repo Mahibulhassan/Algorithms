@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+int use[20],num[20],i;
+
+
+void permo(int ps,int n)
+{
+    if (ps==n+1)
+    {
+        for(int i=1;i<=n;i++)
+        {
+            cout<<num[i]<<" ";
+        }
+        cout<<endl;
+        return;
+    }
+    for(int i=1;i<=n;i++)
+    {
+        if(!use[i])
+        {
+            use[i]=1;
+            num[ps]=i;
+            permo(ps+1,n);
+            use[i]=0;
+        }
+    }
+
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    permo(1,n);
+    return main();
+}
