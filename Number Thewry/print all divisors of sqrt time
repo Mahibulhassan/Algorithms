@@ -17,8 +17,6 @@ void printDivisors(int n)
             }
         }
     }
-
-//    cout<<sum<<endl;
 }
 
 int main()
