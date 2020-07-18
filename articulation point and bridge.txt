@@ -1,0 +1,81 @@
+#include<bits/stdc++.h>
+#define Pair pair<int,int>
+ 
+using namespace std;
+ 
+void getArticulationBridges(vector<int>G[],int p,vector<int>&VI,vector<int>&Low,vector<int>&CBChild,int &time,int parent)
+{
+    VI[p] = Low[p] = time;
+    time++;
+ 
+    int i;
+    for(i=0;i!=G[p].size();i++)
+    {
+        if(G[p][i] == parent)
+            continue;
+ 
+        if(VI[G[p][i]] != -1)
+        {
+            Low[p] = min(Low[p],VI[G[p][i]]);
+            continue;
+        }
+ 
+        getArticulationBridges(G,G[p][i],VI,Low,CBChild,time,p);
+ 
+        if(VI[p] < Low[G[p][i]])
+            CBChild[G[p][i]] = 1;
+ 
+        Low[p] = min(Low[p],Low[G[p][i]]);
+    }
+}
+ 
+void dfs(vector<int>G[],int n,int count,vector<bool>&Vis,vector<int>&CBChild)
+{
+    Vis[n] = true;
+    CBChild[n] += count;
+ 
+    int i;
+    for(i=0;i!=G[n].size();i++)
+        if(!Vis[G[n][i]])
+            dfs(G,G[n][i],CBChild[n],Vis,CBChild);
+}
+ 
+int main()
+{
+    int n,m;
+    cin>>n>>m;
+ 
+    vector<int>G[n+1];
+    while(m--)
+    {
+        int x,y;
+        cin>>x>>y;
+ 
+        G[x].push_back(y);
+        G[y].push_back(x);
+    }
+ 
+    vector<int>VI(n+1,-1);
+    vector<int>Low(n+1);
+    vector<int>CBChild(n+1,0);
+    int time = 1;
+ 
+    getArticulationBridges(G,n,VI,Low,CBChild,time,0);                  // define
+ 
+    vector<bool>Vis(n+1,false);
+    dfs(G,n,0,Vis,CBChild);                                             // define
+ 
+    int q;
+    cin>>q;
+    while(q--)
+    {
+        int s;
+        cin>>s;
+        if(CBChild[s])
+            cout<<CBChild[s]<<'\n';
+        else
+            cout<<"impossible\n";
+    }
+ 
+    return 0;
+}
